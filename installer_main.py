@@ -30,14 +30,23 @@ def create_shortcut(
     working_dir: Path,
     arguments: str = "",
 ) -> None:
-    command = (
-        "$s=(New-Object -ComObject WScript.Shell).CreateShortcut($args[0]);"
-        "$s.TargetPath=$args[1];"
-        "$s.WorkingDirectory=$args[2];"
-        "$s.Arguments=$args[3];"
-        "$s.IconLocation=$args[4];"
-        "$s.Save()"
-    )
+    shortcut_path.parent.mkdir(parents=True, exist_ok=True)
+    command = """
+param(
+    [string]$ShortcutPath,
+    [string]$TargetPath,
+    [string]$WorkingDirectory,
+    [string]$ShortcutArguments,
+    [string]$IconLocation
+)
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($ShortcutPath)
+$shortcut.TargetPath = $TargetPath
+$shortcut.WorkingDirectory = $WorkingDirectory
+$shortcut.Arguments = $ShortcutArguments
+$shortcut.IconLocation = $IconLocation
+$shortcut.Save()
+"""
     subprocess.run(
         [
             "powershell.exe",
