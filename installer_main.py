@@ -5,12 +5,13 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import winreg
 from pathlib import Path
 
 
 APP_NAME = "Atalho Médico"
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.1.2"
 APP_EXE = "AtalhoMedico.exe"
 
 
@@ -31,7 +32,7 @@ def create_shortcut(
     arguments: str = "",
 ) -> None:
     shortcut_path.parent.mkdir(parents=True, exist_ok=True)
-    command = """
+    script = """
 param(
     [string]$ShortcutPath,
     [string]$TargetPath,
@@ -47,23 +48,54 @@ $shortcut.Arguments = $ShortcutArguments
 $shortcut.IconLocation = $IconLocation
 $shortcut.Save()
 """
-    subprocess.run(
-        [
-            "powershell.exe",
-            "-NoProfile",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            command,
-            str(shortcut_path),
-            str(target),
-            str(working_dir),
-            arguments,
-            str(target),
-        ],
-        check=True,
-        creationflags=subprocess.CREATE_NO_WINDOW,
-    )
+    with tempfile.NamedTemporaryFile("w", suffix=".ps1", delete=False, encoding="utf-8-sig") as file:
+        file.write(script)
+        script_path = file.name
+
+    try:
+        result = subprocess.run(
+            [
+                "powershell.exe",
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                script_path,
+                "-ShortcutPath",
+                str(shortcut_path),
+                "-TargetPath",
+                str(target),
+                "-WorkingDirectory",
+                str(working_dir),
+                "-ShortcutArguments",
+                arguments,
+                "-IconLocation",
+                str(target),
+            ],
+            capture_output=True,
+            text=True,
+            creationflags=subprocess.CREATE_NO_WINDOW,
+        )
+    finally:
+        try:
+            Path(script_path).unlink()
+        except OSError:
+            pass
+
+    if result.returncode == 0:
+        return
+
+    fallback_path = shortcut_path.with_suffix(".cmd")
+    if arguments:
+        fallback_path.write_text(
+            f'@echo off\nstart "" "{target}" {arguments}\n',
+            encoding="utf-8",
+        )
+    else:
+        fallback_path.write_text(
+            f'@echo off\nstart "" "{target}"\n',
+            encoding="utf-8",
+        )
 
 
 def write_uninstaller(install_dir: Path) -> Path:
@@ -123,18 +155,33 @@ def install() -> None:
         shutil.copyfile(readme_source, install_dir / "README.md")
 
     uninstall_script = write_uninstaller(install_dir)
-    create_shortcut(start_menu_dir / f"{APP_NAME}.lnk", exe_path, install_dir)
-    create_shortcut(desktop_shortcut, exe_path, install_dir)
-    create_shortcut(
-        start_menu_dir / f"Desinstalar {APP_NAME}.lnk",
-        Path("powershell.exe"),
-        install_dir,
-        f'-NoProfile -ExecutionPolicy Bypass -File "{uninstall_script}"',
-    )
+    shortcut_errors: list[str] = []
+    for shortcut_path, target, working_dir, arguments in [
+        (start_menu_dir / f"{APP_NAME}.lnk", exe_path, install_dir, ""),
+        (desktop_shortcut, exe_path, install_dir, ""),
+        (
+            start_menu_dir / f"Desinstalar {APP_NAME}.lnk",
+            Path("powershell.exe"),
+            install_dir,
+            f'-NoProfile -ExecutionPolicy Bypass -File "{uninstall_script}"',
+        ),
+    ]:
+        try:
+            create_shortcut(shortcut_path, target, working_dir, arguments)
+        except Exception as exc:
+            shortcut_errors.append(f"{shortcut_path}: {exc}")
+
     register_uninstall(install_dir, exe_path, uninstall_script)
 
     subprocess.Popen([str(exe_path)], cwd=str(install_dir))
-    message("Atalho Médico foi instalado com sucesso.")
+    if shortcut_errors:
+        message(
+            "Atalho Médico foi instalado, mas houve erro ao criar um ou mais atalhos.\n\n"
+            "Você pode abrir o aplicativo pela pasta:\n"
+            f"{install_dir}"
+        )
+    else:
+        message("Atalho Médico foi instalado com sucesso.")
 
 
 if __name__ == "__main__":
