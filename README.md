@@ -20,13 +20,25 @@ O app não toma decisões clínicas, não substitui o médico e não é um dispo
 - Importa e exporta a biblioteca em JSON.
 - Mantém apenas um buffer curto dos últimos caracteres digitados e não salva histórico de digitação.
 
-## Instalação
+## Instalação para usuário final
 
-### Versão instalável
+Baixe o arquivo `AtalhoMedicoSetup.exe` na página de Releases do GitHub e execute.
 
-Baixe o instalador da página de Releases do GitHub, execute `AtalhoMedicoSetup.exe` e siga as instruções. O instalador copia o aplicativo para a pasta local do usuário e cria atalhos no Menu Iniciar e na Área de Trabalho.
+Não precisa instalar Python, criar ambiente virtual, baixar dependências ou usar terminal.
 
-### Desenvolvimento
+O instalador:
+
+- copia o aplicativo para a pasta local do usuário;
+- cria atalho na Área de Trabalho;
+- cria atalho no Menu Iniciar;
+- registra o app em "Adicionar ou remover programas";
+- abre o Atalho Médico ao final da instalação.
+
+O Windows pode mostrar aviso de aplicativo desconhecido porque o instalador ainda não é assinado digitalmente.
+
+## Desenvolvimento
+
+Estas instruções são apenas para quem deseja modificar o código-fonte.
 
 Crie e ative um ambiente virtual:
 
