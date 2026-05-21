@@ -1,0 +1,156 @@
+[
+  {
+    "atalho": ".c",
+    "titulo": "Conduta COVID-19",
+    "categoria": "Importados",
+    "texto": "- Solicito testagem de COVID-19;\n- Prescrevo sintomáticos;\n- Atesto por 05 dias;\n- Oriento isolamento social + sinais de alerta",
+    "ativo": true
+  },
+  {
+    "atalho": ".ef",
+    "titulo": "Exames Físico",
+    "categoria": "Exame físico",
+    "texto": "BEG, CHAA. Afebril. MVF, sem RA, eupneico. Oroscopia normal. Otoscopia sem alterações. Abdome inocente, indolor à palpação superficial e profunda. Meningismo negativo, sem petéquias.",
+    "ativo": true
+  },
+  {
+    "atalho": ".g",
+    "titulo": "IVAS",
+    "categoria": "Importados",
+    "texto": "- Prescrevo sintomáticos;\n- Atesto hoje;\n- Oriento sinais alerta",
+    "ativo": true
+  },
+  {
+    "atalho": ".h",
+    "titulo": "Pedido HbA1c",
+    "categoria": "Importados",
+    "texto": "Pedido de HbA1c (e outros exames) para paciente diabético, para retorno posterior com resultados.",
+    "ativo": true
+  },
+  {
+    "atalho": ".i",
+    "titulo": "Finalizar atendimento",
+    "categoria": "Importados",
+    "texto": "- Oriento a importância de tomar as medicações como prescrito e orientado.",
+    "ativo": true
+  },
+  {
+    "atalho": ".j",
+    "titulo": "Renovação e PA",
+    "categoria": "Importados",
+    "texto": "Paciente deixa receita na recepção para renovar. PA aferida pela enfermagem. Irá retornar para consulta agendada.",
+    "ativo": true
+  },
+  {
+    "atalho": ".l",
+    "titulo": "Exames rotina + Retorno",
+    "categoria": "Importados",
+    "texto": "- Solicito exames laboratoriais;\n- Retorno com exames.",
+    "ativo": true
+  },
+  {
+    "atalho": ".o",
+    "titulo": "Procedimento PN",
+    "categoria": "Importados",
+    "texto": "0301010110",
+    "ativo": true
+  },
+  {
+    "atalho": ".p",
+    "titulo": "Procedimento consulta",
+    "categoria": "Importados",
+    "texto": "0301010064",
+    "ativo": true
+  },
+  {
+    "atalho": ".r",
+    "titulo": "Renovacao receira",
+    "categoria": "Importados",
+    "texto": "Paciente solicita renovação de receitas",
+    "ativo": true
+  },
+  {
+    "atalho": ".v",
+    "titulo": "prontuário físico",
+    "categoria": "Importados",
+    "texto": "- vide prontuário físico",
+    "ativo": true
+  },
+  {
+    "atalho": ".y",
+    "titulo": "Exames",
+    "categoria": "Importados",
+    "texto": "<b>GJ</b>: %filltext:name=GJ-:width=3%mg/dl; <b>A1c</b>: %filltext:name=A1c:width=3%%%; <b>CT</b>: %filltext:name=CT:width=3%mg/dL; <b>Trig</b>.: %filltext:name=Trig:width=3%mg/dL; <b>TSH</b>: %filltext:name=TSH:width=3%microUI/ml; <b>T4L</b>: %filltext:name=T4L:width=3%ng/dL; <b>TGO</b>: %filltext:name=TGO:width=3%U/L; <b>TGP</b>: %filltext:name=TGP:width=3%U/L; <b>G-GT</b>: %filltext:name=G-GT:width=3%U/L; <b>Vit. D</b>: %filltext:name=Vit. D:width=3%ng/ml; <b>Ferro</b>: %filltext:name=Ferro:width=3%ng/ml; <b>Ferritina</b>: %filltext:name=Ferritina:width=3%ng/ml; <b>Uréia</b>: %filltext:name=Uréia:width=3%mg/dL; Creatinina: %filltext:name=Creatinina:width=3%mg/dL.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cp12",
+    "titulo": "Tomar 01 comp 12/12",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido de 12/12 horas.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cp24",
+    "titulo": "Tomar 01 comp 24/24",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido de 24/24 horas.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cp6",
+    "titulo": "Tomar 01 comprimido de 6/6",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido de 6/6 horas.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cp8",
+    "titulo": "Tomar 01 comp 8/8",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido de 8/8 horas.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cpc",
+    "titulo": "Tomar 01 comp cedo",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido cedo.",
+    "ativo": true
+  },
+  {
+    "atalho": "1cpn",
+    "titulo": "Tomar 01 comp. noite",
+    "categoria": "Importados",
+    "texto": "Tomar 01 comprimido à noite.",
+    "ativo": true
+  },
+  {
+    "atalho": ";cnes",
+    "titulo": "CNES PSF Recreio",
+    "categoria": "Importados",
+    "texto": "9479252",
+    "ativo": true
+  },
+  {
+    "atalho": ";d",
+    "titulo": "dengue",
+    "categoria": "Importados",
+    "texto": "- Sintomáticos + hidratação rigorosa;\n- Solicito sorologia para dengue;\n- Oriento sinais de alerta;\n- Atesto por 5 dias.",
+    "ativo": true
+  },
+  {
+    "atalho": ";fal",
+    "titulo": "Falta paciente",
+    "categoria": "Importados",
+    "texto": "Paciente não compareceu a consulta.",
+    "ativo": true
+  },
+  {
+    "atalho": ";ren",
+    "titulo": "Renovo receita (vide prontuário físico);",
+    "categoria": "Importados",
+    "texto": "- Renovo receita (vide prontuário físico);",
+    "ativo": true
+  }
+]

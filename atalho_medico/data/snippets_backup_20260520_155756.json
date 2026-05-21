@@ -1,0 +1,30 @@
+[
+  {
+    "atalho": ".rcr",
+    "titulo": "Ritmo cardíaco regular",
+    "categoria": "Exame físico",
+    "texto": "Ritmo cardíaco regular em 2 tempos, bulhas normofonéticas, sem sopros audíveis.",
+    "ativo": true
+  },
+  {
+    "atalho": ".mv",
+    "titulo": "Murmúrio vesicular preservado",
+    "categoria": "Exame físico",
+    "texto": "Murmúrio vesicular presente bilateralmente, sem ruídos adventícios.",
+    "ativo": true
+  },
+  {
+    "atalho": ".has",
+    "titulo": "Orientações HAS",
+    "categoria": "HAS",
+    "texto": "Oriento medidas de controle pressórico, redução de sal na dieta, atividade física regular conforme tolerância, adesão ao tratamento e retorno para acompanhamento.",
+    "ativo": true
+  },
+  {
+    "atalho": ".dm",
+    "titulo": "Orientações diabetes",
+    "categoria": "Diabetes",
+    "texto": "Oriento cuidados com alimentação, atividade física regular, adesão ao tratamento, monitorização conforme disponibilidade e cuidados com os pés.",
+    "ativo": true
+  }
+]
